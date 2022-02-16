@@ -30,7 +30,7 @@ export const slice = createSlice({
                 tasks[index] = {...tasks[index], ...action.payload.model}
             }
         },
-        setTasksAC: (state, action: PayloadAction<{ tasks: Array<any>, todoListID: string }>) => {
+        setTasksAC: (state, action: PayloadAction<{ tasks: Array<TaskType>, todoListID: string }>) => {
             state[action.payload.todoListID] = action.payload.tasks.map(task => ({...task, entityStatus: 'idle'}));
         },
         changeTaskEntityStatusAC: (state, action: PayloadAction<{ taskId: string, todoListID: string, entityStatus: RequestStatusType }>) => {
@@ -50,7 +50,7 @@ export const slice = createSlice({
                 delete state[action.payload.todoListID]
             })
             .addCase(setTodoListsAC, (state, action) => {
-                action.payload.todoLists.forEach((tdl: any) => state[tdl.id] = [])
+                action.payload.todoLists.forEach((tdl) => state[tdl.id] = [])
             })
             .addCase(clearTodoListsDataAC, () => {
                 return {}
