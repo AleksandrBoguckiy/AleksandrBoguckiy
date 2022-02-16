@@ -15,7 +15,7 @@ import {Menu} from '@mui/icons-material';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 import pink from '@mui/material/colors/pink';
 import {ErrorSnackbar} from "../components/ErrorSnackbar/ErrorSnackbar";
-import {BrowserRouter, HashRouter, Redirect, Route, Switch} from "react-router-dom";
+import {HashRouter, Redirect, Route, Switch} from "react-router-dom";
 import {Login} from "../features/Login/Login";
 import CircularProgress from '@mui/material/CircularProgress';
 import {logoutTC} from "../features/Login/auth-reducer";
