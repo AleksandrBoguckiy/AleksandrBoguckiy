@@ -149,6 +149,7 @@ export const updateTaskTC = (todoListID: string, taskId: string, domainModel: Up
                     }))
                 } else {
                     handleServerAppError<{ item: TaskType }>(res.data, dispatch)
+                    dispatch(changeTaskEntityStatusAC({taskId: taskId, todoListID: todoListID, entityStatus: 'succeeded'}))
                 }
             })
             .catch((error) => {
