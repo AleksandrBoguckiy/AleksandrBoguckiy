@@ -57,7 +57,8 @@ export const slice = createSlice({
             })
     }
 })
-
+/*case "SET-TASKS":
+            return {...state, [action.todoListID]: action.tasks.map(task => ({...task, entityStatus: 'idle'}))}*/
 // худший вариант extraReducers (дублирование кода типизации)
 // {
 //     [addTodoListAC.type]: (state, action: PayloadAction<{ todoList: TodoListType }>) => {
