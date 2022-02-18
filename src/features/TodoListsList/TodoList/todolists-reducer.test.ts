@@ -2,6 +2,7 @@ import {
     addTodoListAC, changeTodoListEntityStatusAC,
     changeTodolistFilterAC,
     changeTodoListTitleAC,
+    clearTodoListsDataAC,
     FilterValuesType,
     removeTodoListAC, setTodoListsAC,
     TodoListDomainType,
@@ -30,7 +31,7 @@ test('correct todolist should be removed', () => {
     expect(endState[0].id).toBe(todolistId2);
 });
 
-test('correct todolist should be added', () => {
+test('correct todoList should be added', () => {
 
     let newTodolistTitle = "New Todolist";
 
@@ -40,7 +41,7 @@ test('correct todolist should be added', () => {
     expect(endState[0].title).toBe(newTodolistTitle);
 });
 
-test('correct filter of todolist should be changed', () => {
+test('correct filter of todoList should be changed', () => {
 
     let newFilter: FilterValuesType = "Completed";
 
@@ -50,7 +51,7 @@ test('correct filter of todolist should be changed', () => {
     expect(endState[1].filter).toBe(newFilter);
 });
 
-test('correct todolist should change its name', () => {
+test('correct todoList should change its name', () => {
 
     let newTodolistTitle = "New Todolist";
     const action = changeTodoListTitleAC({newTitle: newTodolistTitle, todoListID: todolistId2})
@@ -60,7 +61,7 @@ test('correct todolist should change its name', () => {
     expect(endState[1].title).toBe(newTodolistTitle);
 });
 
-test('todolist should should be added', () => {
+test('todoList should should be added', () => {
 
     const action = setTodoListsAC({todoLists: startState})
     const endState = todoListsReducer([], action)
@@ -68,7 +69,7 @@ test('todolist should should be added', () => {
     expect(endState.length).toBe(2)
 });
 
-test('correct entity status of todolist should be changed', () => {
+test('correct entity status of todoList should be changed', () => {
 
     let newStatus: RequestStatusType = 'loading'
     const action = changeTodoListEntityStatusAC({todoListID: todolistId2, entityStatus: newStatus})
@@ -78,8 +79,11 @@ test('correct entity status of todolist should be changed', () => {
     expect(endState[1].entityStatus).toBe(newStatus)
 });
 
+test('todoLists data should be cleared', () => {
 
+    const action = clearTodoListsDataAC()
+    let endState = todoListsReducer(startState, action)
 
-
-
+    expect(endState.length).toBe(0)
+});
 

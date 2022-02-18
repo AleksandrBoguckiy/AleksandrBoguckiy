@@ -3,9 +3,9 @@ import {authAPI} from "../api/todoLists-api";
 import {setIsLoggedInAC} from "../features/Login/auth-reducer";
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
-const initialState = {
-    status: 'succeeded' as RequestStatusType,
-    error: null as string | null,
+const initialState: InitialStateType = {
+    status: 'succeeded',
+    error: null,
     isInitialized: false
 }
 
@@ -38,3 +38,8 @@ export const initializeAppTC = () => (dispatch: Dispatch) => {
 }
 
 export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed'
+export type InitialStateType = {
+    status: RequestStatusType,
+    error: string | null,
+    isInitialized: boolean
+}
